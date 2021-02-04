@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <devices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.example.com/computer"
+             xsi:schemaLocation="http://www.example.com/computer computer.xsd">
+        <Device pick="accessories">
+            <id>C228322Q</id>
+            <component>CPU</component>
+            <origin>China</origin>
+            <price>1300</price>
+            <critical>true</critical>
+            <type>
+               <peripheral>false</peripheral>
+                <energy>100</energy>
+                <cooler>true</cooler>
+                <port>Socket</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="accessories">
+            <id>C2283221</id>
+            <component>GPU</component>
+            <origin>USA</origin>
+            <price>1100</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>false</peripheral>
+                <energy>120</energy>
+                <cooler>true</cooler>
+                <port>PCIex16</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="accessories">
+            <id>A228322W</id>
+            <component>HDD</component>
+            <origin>China</origin>
+            <price>130</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>false</peripheral>
+                <energy>20</energy>
+                <cooler>false</cooler>
+                <port>SATA 3</port>
+                <port>M2</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="accessories">
+            <id>M228322Q</id>
+            <component>RAM</component>
+            <origin>Russia</origin>
+            <price>130</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>false</peripheral>
+                <energy>20</energy>
+                <cooler>false</cooler>
+                <port>Chipset</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="I/O">
+            <id>C1322678Q</id>
+            <component>Keyboard</component>
+            <origin>China</origin>
+            <price>300</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>30</energy>
+                <cooler>false</cooler>
+                <port>USB</port>
+                <port>PS/2</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="multimedia">
+            <id>N967451P</id>
+            <component>Headphones</component>
+            <origin>China</origin>
+            <price>350</price>
+            <critical>false</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>10</energy>
+                <cooler>false</cooler>
+                <port>TRS</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="I/O">
+            <id>C1236578Z</id>
+            <component>Mouse</component>
+            <origin>BLR</origin>
+            <price>150</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>10</energy>
+                <cooler>false</cooler>
+                <port>USB</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="multimedia">
+            <id>C228323Q</id>
+            <component>Web-camera</component>
+            <origin>USA</origin>
+            <price>100</price>
+            <critical>false</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>10</energy>
+                <cooler>false</cooler>
+                <port>USB</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="accessories">
+            <id>C228324Q</id>
+            <component>Motherboard</component>
+            <origin>USA</origin>
+            <price>200</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>false</peripheral>
+                <energy>5</energy>
+                <cooler>false</cooler>
+                <port>Socket AM3</port>
+                <port>DDR3</port>
+                <port>PCIex16</port>
+                <port>SATA</port>
+                <port>COM</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="I/O">
+            <id>C228325Q</id>
+            <component>Display</component>
+            <origin>China</origin>
+            <price>170</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>100</energy>
+                <cooler>false</cooler>
+                <port>VGA</port>
+                <port>HDMI</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="accessories">
+            <id>C228326Q</id>
+            <component>External hard drive</component>
+            <origin>USA</origin>
+            <price>200</price>
+            <critical>false</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>10</energy>
+                <cooler>false</cooler>
+                <port>USB</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="I/O">
+            <id>C2283227</id>
+            <component>Microphone</component>
+            <origin>China</origin>
+            <price>70</price>
+            <critical>false</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>5</energy>
+                <cooler>false</cooler>
+                <port>TRS</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="accessories">
+            <id>C228328Q</id>
+            <component>Modem</component>
+            <origin>China</origin>
+            <price>120</price>
+            <critical>false</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>10</energy>
+                <cooler>false</cooler>
+                <port>SFP</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="accessories">
+            <id>C228329Q</id>
+            <component>Power supply</component>
+            <origin>USA</origin>
+            <price>246</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>false</peripheral>
+                <energy>300</energy>
+                <cooler>true</cooler>
+                <port>AM3+</port>
+                <port>LGA1200</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="multimedia">
+            <id>C228330Q</id>
+            <component>Audio interface</component>
+            <origin>BLR</origin>
+            <price>50</price>
+            <critical>false</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>15</energy>
+                <cooler>false</cooler>
+                <port>PCI</port>
+                <port>PCLe</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+        <Device pick="I/O">
+            <id>C228331Q</id>
+            <component>Controller</component>
+            <origin>Canada</origin>
+            <price>120</price>
+            <critical>false</critical>
+            <type>
+                <peripheral>true</peripheral>
+                <energy>10</energy>
+                <cooler>false</cooler>
+                <port>USB</port>
+            </type>
+            <date>2021-01-30T12:30:00</date>
+        </Device>
+    </devices>

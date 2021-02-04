@@ -1,0 +1,61 @@
+<schema    xmlns="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.example.com/computer"
+           xmlns:tns="http://www.example.com/computer">
+    <element name="devices">
+        <complexType>
+            <sequence>
+                <element name="Device" type="tns:Device" minOccurs="16" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Device">
+        <sequence>
+            <element name="id">
+                <simpleType>
+                    <restriction base="ID">
+                        <pattern value="[a-zA-Z0-9]{8,20}"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="component" type="string"/>
+            <element name="origin" type="string"/>
+            <element name="price" type="tns:Price"/>
+            <element name="critical" type="boolean"/>
+            <element name="type" type="tns:Type"/>
+            <element name="date" type="dateTime"/>
+        </sequence>
+        <attribute name="pick" use="required">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="multimedia"></enumeration>
+                    <enumeration value="accessories"></enumeration>
+                    <enumeration value="I/O"></enumeration>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="manufacturer" use="optional" default="HP">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="HP"></enumeration>
+                    <enumeration value="WD"></enumeration>
+                    <enumeration value="Toshiba"></enumeration>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+    <complexType name="Type">
+        <sequence>
+            <element type="boolean" name="peripheral"/>
+            <element type="int" name="energy"/>
+            <element type="boolean" name="cooler"/>
+            <element type="string" name="port" minOccurs="1" maxOccurs="5"/>
+        </sequence>
+    </complexType>
+    <simpleType name="Price">
+        <restriction base="positiveInteger">
+            <minInclusive value="50"/>
+            <maxInclusive value="2000"/>
+        </restriction>
+    </simpleType>
+</schema>
