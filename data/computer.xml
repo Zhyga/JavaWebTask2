@@ -163,7 +163,7 @@
             </type>
             <date>2021-01-30T12:30:00</date>
         </Device>
-        <Device pick="I/O">
+        <Device pick="I/O" manufacturer="Toshiba">
             <id>C2283227</id>
             <component>Microphone</component>
             <origin>China</origin>

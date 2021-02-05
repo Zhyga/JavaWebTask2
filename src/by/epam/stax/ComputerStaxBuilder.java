@@ -1,9 +1,9 @@
 package by.epam.stax;
 
-import by.epam.builder.ComputerParsingBuilder;
+import by.epam.builder.ComputerBuilder;
 import by.epam.entity.Computer;
 import by.epam.entity.ComputerXMLTag;
-import by.epam.exception.ParserException;
+import by.epam.exception.CustomParserException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class ComputerStaxBuilder extends ComputerParsingBuilder {
+public class ComputerStaxBuilder extends ComputerBuilder {
     private static Logger logger = LogManager.getLogger();
     private XMLInputFactory inputFactory;
 
@@ -27,12 +27,11 @@ public class ComputerStaxBuilder extends ComputerParsingBuilder {
     }
 
     @Override
-    public void buildSetComputers(String fileName) throws ParserException {
+    public void buildSetComputers(String fileName) throws CustomParserException {
         XMLStreamReader reader;
         String name;
         try(FileInputStream inputStream = new FileInputStream(new File(fileName))) {
             reader = inputFactory.createXMLStreamReader(inputStream);
-            // StAX parsing
             while (reader.hasNext()) {
                 int type = reader.next();
                 if (type == XMLStreamConstants.START_ELEMENT) {
@@ -45,19 +44,21 @@ public class ComputerStaxBuilder extends ComputerParsingBuilder {
             }
         }
         catch (XMLStreamException | FileNotFoundException e) {
-            logger.error("Parsing exception");
-            throw new ParserException(e.getCause());
+            logger.error("Parsing exception",e);
+            throw new CustomParserException(e);
         } catch (IOException e) {
-            logger.error("Smth wrong with file");
-            throw new ParserException(e.getCause());
+            logger.error("Problems with file",e);
+            throw new CustomParserException(e);
         }
     }
 
     private Computer buildComputer(XMLStreamReader reader) throws XMLStreamException {
         Computer computer = new Computer();
         computer.setPick(reader.getAttributeValue(null, ComputerXMLTag.PICK.getValue()));
-        // null check
-        computer.setManufacturer(reader.getAttributeValue(null, ComputerXMLTag.MANUFACTURER.getValue()));
+        String manufacturerAttr = reader.getAttributeValue(null, ComputerXMLTag.MANUFACTURER.getValue());
+        if(manufacturerAttr != null) {
+            computer.setManufacturer(manufacturerAttr);
+        }
         String name;
         while (reader.hasNext()) {
             int type = reader.next();
@@ -90,7 +91,7 @@ public class ComputerStaxBuilder extends ComputerParsingBuilder {
     }
 
     private Computer.Type getXMLType(XMLStreamReader reader) throws XMLStreamException {
-        Computer.Type type = new Computer().new Type();
+        Computer.Type type = new Computer.Type();
         int choice;
         String name;
         ArrayList<String> list = new ArrayList<String>();

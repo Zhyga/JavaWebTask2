@@ -1,6 +1,8 @@
 package by.epam.entity;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Computer {
     private String id;
@@ -12,8 +14,10 @@ public class Computer {
     private Type type = new Type();
     private String pick;
     private String manufacturer;
+    private static final String DEFAULT_MANUFUCTURER = "HP";
 
     public Computer() {
+        manufacturer = DEFAULT_MANUFUCTURER;
     }
 
     public Computer(String id, String component, String origin, int price, boolean critical, LocalDateTime date, Type type, String pick, String manufacturer) {
@@ -101,22 +105,37 @@ public class Computer {
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\nComputer{").append("\nid = ").append(id);
-        sb.append("\ncomponent = ").append(component);
-        sb.append("\norigin = ").append(origin);
-        sb.append("\nprice = ").append(price);
-        sb.append("\ncritical = ").append(critical);
-        sb.append("\ndate = ").append(date);
-        sb.append("\npick = ").append(pick);
-        sb.append("\nmanufacturer = ").append(manufacturer).append("}");
-        sb.append("\n").append(type);
-        sb.append("\n");
-        return sb.toString();
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Computer computer = (Computer) obj;
+        return price == computer.price &&
+                critical == computer.critical &&
+                Objects.equals(id, computer.id) &&
+                Objects.equals(component, computer.component) &&
+                Objects.equals(origin, computer.origin) &&
+                Objects.equals(date, computer.date) &&
+                Objects.equals(type, computer.type) &&
+                Objects.equals(pick, computer.pick) &&
+                Objects.equals(manufacturer, computer.manufacturer);
     }
 
-    public class Type{
+    @Override
+    public int hashCode() {
+        int result = 31;
+        result = 24 * result + (component == null ? 0 : component.hashCode());
+        result = 24 * result + (id == null ? 0 : id.hashCode());
+        result = 24 * result + (origin == null ? 0 : origin.hashCode());
+        result = 24 * result + (pick == null ? 0 : pick.hashCode());
+        result = 24 * result + (manufacturer == null ? 0 : manufacturer.hashCode());
+        result = 24 * result + price;
+        result = 24 * result + (critical ? 1 : 0 );
+        result = 24 * result + (date == null ? 0 : date.hashCode());
+        result = 24 * result + type.hashCode();
+        return result;
+    }
+
+    public static class Type{
         private boolean peripheral;
         private int energy;
         private boolean cooler;
@@ -162,6 +181,28 @@ public class Computer {
 
         public void setPorts(String[] ports) {
             this.ports = ports;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || obj.getClass() != this.getClass()) return false;
+            Type type = (Type) obj;
+            return peripheral == type.peripheral &&
+                    energy == type.energy &&
+                    cooler == type.cooler &&
+                    Arrays.equals(ports, type.ports);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = 17;
+            result = 37 * result + (peripheral ? 1 : 0);
+            result = 37 * result + energy;
+            result = 37 * result + (cooler ? 0 : 1);
+            for(String str : ports)
+                result = 37 * result + (str != null ? str.hashCode() : 0);
+            return result;
         }
 
         @Override

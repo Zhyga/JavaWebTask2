@@ -1,8 +1,8 @@
 package by.epam.dom;
 
-import by.epam.builder.ComputerParsingBuilder;
+import by.epam.builder.ComputerBuilder;
 import by.epam.entity.Computer;
-import by.epam.exception.ParserException;
+import by.epam.exception.CustomParserException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
@@ -17,22 +17,22 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-public class ComputerDomBuilder extends ComputerParsingBuilder {
+public class ComputerDomBuilder extends ComputerBuilder {
     private static Logger logger = LogManager.getLogger();
     private DocumentBuilder docBuilder;
 
-    public ComputerDomBuilder() throws ParserException {
+    public ComputerDomBuilder() throws CustomParserException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             docBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            logger.error("error in Dom builder" + e.getMessage());
-            throw new ParserException(e.getCause());
+            logger.error("error in Dom builder",e);
+            throw new CustomParserException(e);
         }
     }
 
     @Override
-    public void buildSetComputers(String fileName) throws ParserException {
+    public void buildSetComputers(String fileName) throws CustomParserException {
         Document doc;
         try {
             doc = docBuilder.parse(fileName);
@@ -44,14 +44,14 @@ public class ComputerDomBuilder extends ComputerParsingBuilder {
                 computers.add(computer);
             }
         } catch (IOException | SAXException e){
-            logger.error("Parsing failure" + e);
-            throw new ParserException(e.getCause());
+            logger.error("Parsing failure",e);
+            throw new CustomParserException(e);
         }
     }
 
     private Computer buildStudent(Element deviceElement) {
         Computer computer = new Computer();
-        computer.setCritical(Boolean.parseBoolean(getElementTextContent(deviceElement, "component")));
+        computer.setCritical(Boolean.parseBoolean(getElementTextContent(deviceElement, "critical")));
         computer.setComponent(getElementTextContent(deviceElement, "component"));
         computer.setId(getElementTextContent(deviceElement, "id"));
         computer.setOrigin(getElementTextContent(deviceElement, "origin"));
@@ -61,7 +61,9 @@ public class ComputerDomBuilder extends ComputerParsingBuilder {
         Integer price = Integer.parseInt(getElementTextContent(deviceElement, "price"));
         computer.setPrice(price);
         computer.setPick(deviceElement.getAttribute("pick"));
-        computer.setManufacturer(deviceElement.getAttribute("manufacturer"));
+        if(deviceElement.getAttribute("manufacturer") != "") {
+            computer.setManufacturer(deviceElement.getAttribute("manufacturer"));
+        }
         Computer.Type type = computer.getType();
         Element typeElement = (Element) deviceElement.getElementsByTagName("type").item(0);
         type.setCooler(Boolean.parseBoolean(getElementTextContent(typeElement, "cooler")));

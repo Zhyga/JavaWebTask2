@@ -21,7 +21,6 @@ public class ComputerErrorHandler implements ErrorHandler {
     }
 
     private String getLineColumnNumber(SAXParseException e) {
-        // determine line and position of error
         return e.getLineNumber() + " : " + e.getColumnNumber();
     }
 }

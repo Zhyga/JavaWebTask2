@@ -17,7 +17,7 @@ public class ComputerHandler extends DefaultHandler{
     private ComputerXMLTag currentXmlTag;
     private EnumSet<ComputerXMLTag> withText;
     private ArrayList<String> list = new ArrayList<String>();
-    private static final String ELEMENT_DEVICE = "Device";
+    private static final String ELEMENT_DEVICE = ComputerXMLTag.DEVICE.getValue();
 
     public ComputerHandler() {
         computers = new HashSet<Computer>();
@@ -79,14 +79,16 @@ public class ComputerHandler extends DefaultHandler{
     }
 
     private void setAttributes(Attributes attrs){
-        String localName = attrs.getLocalName(0);
-        if (localName.equals(ComputerXMLTag.PICK.getValue())) {
-            current.setPick(attrs.getValue(0));
-        }
-        if(attrs.getLength() > 1) {
-            localName = attrs.getLocalName(1);
-            if (localName.equals(ComputerXMLTag.MANUFACTURER.getValue())) {
-                current.setManufacturer(attrs.getValue(1));
+        int size = attrs.getLength();
+        for(int i = 0; i < size; i++){
+            String localName = attrs.getLocalName(i);
+            ComputerXMLTag temp = ComputerXMLTag.valueOf(localName.toUpperCase());
+            switch(temp) {
+                case PICK -> current.setPick(attrs.getValue(i));
+                case MANUFACTURER -> current.setManufacturer(attrs.getValue(i));
+                default -> {
+                    break;
+                }
             }
         }
     }
