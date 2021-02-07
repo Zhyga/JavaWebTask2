@@ -1,4 +1,4 @@
-package by.epam.sax;
+package by.epam.handler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

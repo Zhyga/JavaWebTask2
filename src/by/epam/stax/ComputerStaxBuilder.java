@@ -2,7 +2,7 @@ package by.epam.stax;
 
 import by.epam.builder.ComputerBuilder;
 import by.epam.entity.Computer;
-import by.epam.entity.ComputerXMLTag;
+import by.epam.handler.ComputerXMLTag;
 import by.epam.exception.CustomParserException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

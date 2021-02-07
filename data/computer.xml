@@ -235,4 +235,22 @@
             </type>
             <date>2021-01-30T12:30:00</date>
         </Device>
+        <Notebook pick="accessories">
+            <id>PC0987654</id>
+            <component>notebook</component>
+            <origin>BLR</origin>
+            <price>3000</price>
+            <critical>true</critical>
+            <type>
+                <peripheral>false</peripheral>
+                <energy>0</energy>
+                <cooler>false</cooler>
+                <port>USB</port>
+                <port>TRS</port>
+            </type>
+            <date>2021-02-07T11:41:00</date>
+            <weight>3</weight>
+            <wifi>true</wifi>
+            <display>15.6"</display>
+        </Notebook>
     </devices>

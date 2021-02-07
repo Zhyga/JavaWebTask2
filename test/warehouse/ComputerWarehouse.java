@@ -1,6 +1,7 @@
 package warehouse;
 
 import by.epam.entity.Computer;
+import by.epam.entity.Notebook;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -48,6 +49,8 @@ public class ComputerWarehouse {
                 ,new Computer.Type(true,15,false, new String[]{"PCI","PCLe"}),"multimedia","HP");//correct
         Computer computer16 = new Computer("C228331Q","Controller","Canada",120,false,LocalDateTime.parse("2021-01-30T12:30:00")
                 ,new Computer.Type(true,10,false, new String[]{"USB"}),"I/O","HP");
+        Notebook notebook = new Notebook("PC0987654","notebook","BLR",3000,true,LocalDateTime.parse("2021-02-07T11:41:00")
+                ,new Computer.Type(false,0,false, new String[]{"USB","TRS"}),"accessories","HP",3,true,"15.6\"");
         computers.add(computer1);
         computers.add(computer2);
         computers.add(computer3);
@@ -64,6 +67,7 @@ public class ComputerWarehouse {
         computers.add(computer14);
         computers.add(computer15);
         computers.add(computer16);
+        computers.add(notebook);
         return computers;
     }
 }

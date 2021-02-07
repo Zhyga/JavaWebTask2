@@ -1,7 +1,6 @@
-package by.epam.sax;
+package by.epam.handler;
 
 import by.epam.entity.Computer;
-import by.epam.entity.ComputerXMLTag;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 

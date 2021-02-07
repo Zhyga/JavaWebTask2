@@ -111,13 +111,20 @@ public class Computer {
         Computer computer = (Computer) obj;
         return price == computer.price &&
                 critical == computer.critical &&
-                Objects.equals(id, computer.id) &&
-                Objects.equals(component, computer.component) &&
-                Objects.equals(origin, computer.origin) &&
-                Objects.equals(date, computer.date) &&
-                Objects.equals(type, computer.type) &&
-                Objects.equals(pick, computer.pick) &&
-                Objects.equals(manufacturer, computer.manufacturer);
+                id == computer.id || (id != null && id.equals(computer.id)) &&
+                pick == computer.pick || (pick != null && pick.equals(computer.pick)) &&
+                component == computer.component || (component != null && component.equals(computer.component)) &&
+                origin == computer.origin || (origin != null && origin.equals(computer.origin)) &&
+                date == computer.date || (date != null && date.equals(computer.date)) &&
+                type == computer.type || (type != null && type.equals(computer.type)) &&
+                manufacturer == computer.manufacturer || (manufacturer != null && manufacturer.equals(computer.manufacturer));
+//                Objects.equals(id, computer.id) &&
+//                Objects.equals(component, computer.component) &&
+//                Objects.equals(origin, computer.origin) &&
+//                Objects.equals(date, computer.date) &&
+//                Objects.equals(type, computer.type) &&
+//                Objects.equals(pick, computer.pick) &&
+//                Objects.equals(manufacturer, computer.manufacturer);
     }
 
     @Override
@@ -133,6 +140,31 @@ public class Computer {
         result = 24 * result + (date == null ? 0 : date.hashCode());
         result = 24 * result + type.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nDevice{");
+        sb.append("\n");
+        sb.append("ID = ").append(id);
+        sb.append("\n");
+        sb.append("Component = ").append(component);
+        sb.append("\n");
+        sb.append("Origin = ").append(origin);
+        sb.append("\n");
+        sb.append("Price = ").append(price);
+        sb.append("\n");
+        sb.append("Critical = ").append(critical);
+        sb.append("\n");
+        sb.append("Pick = ").append(pick);
+        sb.append("\n");
+        sb.append("Manufacturer = ").append(manufacturer);
+        sb.append("\n");
+        sb.append("Date = ").append(date);
+        sb.append("\n}\n");
+        sb.append(type);
+        return sb.toString();
     }
 
     public static class Type{

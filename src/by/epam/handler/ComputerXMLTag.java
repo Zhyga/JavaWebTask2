@@ -1,4 +1,4 @@
-package by.epam.entity;
+package by.epam.handler;
 
 public enum ComputerXMLTag {
     DEVICES("devices"),
@@ -15,7 +15,10 @@ public enum ComputerXMLTag {
     PERIPHERAL("peripheral"),
     TYPE("type"),
     PICK("pick"),
-    MANUFACTURER("manufacturer");
+    MANUFACTURER("manufacturer"),
+    WIFI("wifi"),
+    WEIGHT("weight"),
+    DISPLAY("display");
     private String value;
     ComputerXMLTag(String value) {this.value = value;  }
     public String getValue() {return value;  }

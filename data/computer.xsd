@@ -5,7 +5,8 @@
     <element name="devices">
         <complexType>
             <sequence>
-                <element name="Device" type="tns:Device" minOccurs="1" maxOccurs="unbounded"/>
+                <element name="Device" type="tns:Device" minOccurs="16" maxOccurs="unbounded"/>
+                <element name="Notebook" type="tns:Notebook"/>
             </sequence>
         </complexType>
     </element>
@@ -55,7 +56,18 @@
     <simpleType name="Price">
         <restriction base="positiveInteger">
             <minInclusive value="50"/>
-            <maxInclusive value="2000"/>
+            <maxInclusive value="3000"/>
         </restriction>
     </simpleType>
+    <complexType name="Notebook">
+        <complexContent>
+            <extension base="tns:Device">
+                <sequence>
+                    <element name="weight" type="positiveInteger"/>
+                    <element name="wifi" type="boolean"/>
+                    <element name="display" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
 </schema>

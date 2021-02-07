@@ -2,6 +2,8 @@ package by.epam.sax;
 
 import by.epam.builder.ComputerBuilder;
 import by.epam.exception.CustomParserException;
+import by.epam.handler.ComputerErrorHandler;
+import by.epam.handler.ComputerHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
