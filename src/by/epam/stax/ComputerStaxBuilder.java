@@ -6,7 +6,6 @@ import by.epam.handler.ComputerXMLTag;
 import by.epam.exception.CustomParserException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;

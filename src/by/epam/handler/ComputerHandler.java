@@ -3,7 +3,6 @@ package by.epam.handler;
 import by.epam.entity.Computer;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -19,7 +18,7 @@ public class ComputerHandler extends DefaultHandler{
     private static final String ELEMENT_DEVICE = ComputerXMLTag.DEVICE.getValue();
 
     public ComputerHandler() {
-        computers = new HashSet<Computer>();
+        computers = new HashSet<>();
         withText = EnumSet.range(ComputerXMLTag.COMPONENT, ComputerXMLTag.PERIPHERAL);
     }
 

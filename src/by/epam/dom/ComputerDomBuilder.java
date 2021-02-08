@@ -4,6 +4,7 @@ import by.epam.builder.ComputerBuilder;
 import by.epam.entity.Computer;
 import by.epam.entity.Notebook;
 import by.epam.exception.CustomParserException;
+import by.epam.handler.ComputerXMLTag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
@@ -11,7 +12,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -38,8 +38,8 @@ public class ComputerDomBuilder extends ComputerBuilder {
         try {
             doc = docBuilder.parse(fileName);
             Element root = doc.getDocumentElement();
-            NodeList deviceList = root.getElementsByTagName("Device");
-            NodeList notebookList = root.getElementsByTagName("Notebook");
+            NodeList deviceList = root.getElementsByTagName(ComputerXMLTag.DEVICE.getValue());
+            NodeList notebookList = root.getElementsByTagName(ComputerXMLTag.NOTEBOOK.getValue());
             for (int i = 0; i < deviceList.getLength(); i++) {
                 Element deviceElement = (Element) deviceList.item(i);
                 Computer computer = buildComputer(deviceElement);
@@ -58,55 +58,55 @@ public class ComputerDomBuilder extends ComputerBuilder {
 
     private Computer buildComputer(Element deviceElement) {
         Computer computer = new Computer();
-        computer.setCritical(Boolean.parseBoolean(getElementTextContent(deviceElement, "critical")));
-        computer.setComponent(getElementTextContent(deviceElement, "component"));
-        computer.setId(getElementTextContent(deviceElement, "id"));
-        computer.setOrigin(getElementTextContent(deviceElement, "origin"));
-        String date = getElementTextContent(deviceElement, "date");
+        computer.setCritical(Boolean.parseBoolean(getElementTextContent(deviceElement, ComputerXMLTag.CRITICAL.getValue())));
+        computer.setComponent(getElementTextContent(deviceElement, ComputerXMLTag.COMPONENT.getValue()));
+        computer.setId(getElementTextContent(deviceElement, ComputerXMLTag.ID.getValue()));
+        computer.setOrigin(getElementTextContent(deviceElement, ComputerXMLTag.ORIGIN.getValue()));
+        String date = getElementTextContent(deviceElement, ComputerXMLTag.DATE.getValue());
         LocalDateTime dateTime = LocalDateTime.parse(date);
         computer.setDate(dateTime);
-        Integer price = Integer.parseInt(getElementTextContent(deviceElement, "price"));
+        Integer price = Integer.parseInt(getElementTextContent(deviceElement, ComputerXMLTag.PRICE.getValue()));
         computer.setPrice(price);
-        computer.setPick(deviceElement.getAttribute("pick"));
-        if(deviceElement.getAttribute("manufacturer") != "") {
-            computer.setManufacturer(deviceElement.getAttribute("manufacturer"));
+        computer.setPick(deviceElement.getAttribute(ComputerXMLTag.PICK.getValue()));
+        if(deviceElement.getAttribute(ComputerXMLTag.MANUFACTURER.getValue()) != "") {
+            computer.setManufacturer(deviceElement.getAttribute(ComputerXMLTag.MANUFACTURER.getValue()));
         }
         Computer.Type type = computer.getType();
-        Element typeElement = (Element) deviceElement.getElementsByTagName("type").item(0);
-        type.setCooler(Boolean.parseBoolean(getElementTextContent(typeElement, "cooler")));
-        Integer energy = Integer.parseInt(getElementTextContent(typeElement, "energy"));
+        Element typeElement = (Element) deviceElement.getElementsByTagName(ComputerXMLTag.TYPE.getValue()).item(0);
+        type.setCooler(Boolean.parseBoolean(getElementTextContent(typeElement, ComputerXMLTag.COOLER.getValue())));
+        Integer energy = Integer.parseInt(getElementTextContent(typeElement, ComputerXMLTag.ENERGY.getValue()));
         type.setEnergy(energy);
-        type.setPeripheral(Boolean.parseBoolean(getElementTextContent(typeElement, "peripheral")));
-        type.setPorts(getElementArrayTextContent(typeElement,"port"));
+        type.setPeripheral(Boolean.parseBoolean(getElementTextContent(typeElement, ComputerXMLTag.PERIPHERAL.getValue())));
+        type.setPorts(getElementArrayTextContent(typeElement,ComputerXMLTag.PORT.getValue()));
         logger.info("Component: " + computer.getComponent() + " set");
         return computer;
     }
 
     private Notebook buildNotebook(Element notebookElement) {
         Notebook notebook = new Notebook();
-        notebook.setCritical(Boolean.parseBoolean(getElementTextContent(notebookElement, "critical")));
-        notebook.setComponent(getElementTextContent(notebookElement, "component"));
-        notebook.setId(getElementTextContent(notebookElement, "id"));
-        notebook.setOrigin(getElementTextContent(notebookElement, "origin"));
-        String date = getElementTextContent(notebookElement, "date");
+        notebook.setCritical(Boolean.parseBoolean(getElementTextContent(notebookElement, ComputerXMLTag.CRITICAL.getValue())));
+        notebook.setComponent(getElementTextContent(notebookElement, ComputerXMLTag.COMPONENT.getValue()));
+        notebook.setId(getElementTextContent(notebookElement, ComputerXMLTag.ID.getValue()));
+        notebook.setOrigin(getElementTextContent(notebookElement, ComputerXMLTag.ORIGIN.getValue()));
+        String date = getElementTextContent(notebookElement, ComputerXMLTag.DATE.getValue());
         LocalDateTime dateTime = LocalDateTime.parse(date);
         notebook.setDate(dateTime);
-        Integer price = Integer.parseInt(getElementTextContent(notebookElement, "price"));
+        Integer price = Integer.parseInt(getElementTextContent(notebookElement, ComputerXMLTag.PRICE.getValue()));
         notebook.setPrice(price);
-        notebook.setPick(notebookElement.getAttribute("pick"));
-        if(notebookElement.getAttribute("manufacturer") != "") {
-            notebook.setManufacturer(notebookElement.getAttribute("manufacturer"));
+        notebook.setPick(notebookElement.getAttribute(ComputerXMLTag.PICK.getValue()));
+        if(notebookElement.getAttribute(ComputerXMLTag.MANUFACTURER.getValue()) != "") {
+            notebook.setManufacturer(notebookElement.getAttribute(ComputerXMLTag.MANUFACTURER.getValue()));
         }
-        notebook.setWeight(Integer.parseInt(getElementTextContent(notebookElement,"weight")));
-        notebook.setWifi(Boolean.parseBoolean(getElementTextContent(notebookElement, "wifi")));
-        notebook.setDisplay(getElementTextContent(notebookElement,"display"));
+        notebook.setWeight(Integer.parseInt(getElementTextContent(notebookElement,ComputerXMLTag.WEIGHT.getValue())));
+        notebook.setWifi(Boolean.parseBoolean(getElementTextContent(notebookElement, ComputerXMLTag.WIFI.getValue())));
+        notebook.setDisplay(getElementTextContent(notebookElement,ComputerXMLTag.DISPLAY.getValue()));
         Computer.Type type = notebook.getType();
-        Element typeElement = (Element) notebookElement.getElementsByTagName("type").item(0);
-        type.setCooler(Boolean.parseBoolean(getElementTextContent(typeElement, "cooler")));
-        Integer energy = Integer.parseInt(getElementTextContent(typeElement, "energy"));
+        Element typeElement = (Element) notebookElement.getElementsByTagName(ComputerXMLTag.TYPE.getValue()).item(0);
+        type.setCooler(Boolean.parseBoolean(getElementTextContent(typeElement, ComputerXMLTag.COOLER.getValue())));
+        Integer energy = Integer.parseInt(getElementTextContent(typeElement, ComputerXMLTag.ENERGY.getValue()));
         type.setEnergy(energy);
-        type.setPeripheral(Boolean.parseBoolean(getElementTextContent(typeElement, "peripheral")));
-        type.setPorts(getElementArrayTextContent(typeElement,"port"));
+        type.setPeripheral(Boolean.parseBoolean(getElementTextContent(typeElement, ComputerXMLTag.PERIPHERAL.getValue())));
+        type.setPorts(getElementArrayTextContent(typeElement,ComputerXMLTag.PORT.getValue()));
         logger.info("Component: " + notebook.getComponent() + " set");
         return notebook;
     }

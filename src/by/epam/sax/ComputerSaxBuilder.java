@@ -6,7 +6,6 @@ import by.epam.handler.ComputerErrorHandler;
 import by.epam.handler.ComputerHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;

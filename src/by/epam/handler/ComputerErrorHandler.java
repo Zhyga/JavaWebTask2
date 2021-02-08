@@ -8,19 +8,19 @@ import org.xml.sax.SAXParseException;
 public class ComputerErrorHandler implements ErrorHandler {
     private static Logger logger = LogManager.getLogger();
 
-    public void warning(SAXParseException e) {
-        logger.warn(getLineColumnNumber(e) + "-" + e.getMessage());
+    public void warning(SAXParseException exception) {
+        logger.warn(getLineColumnNumber(exception) + "-" + exception.getMessage());
     }
 
-    public void error(SAXParseException e) {
-        logger.error(getLineColumnNumber(e) + " - " + e.getMessage());
+    public void error(SAXParseException exception) {
+        logger.error(getLineColumnNumber(exception) + " - " + exception.getMessage());
     }
 
-    public void fatalError(SAXParseException e) {
-        logger.fatal(getLineColumnNumber(e) + " - " + e.getMessage());
+    public void fatalError(SAXParseException exception) {
+        logger.fatal(getLineColumnNumber(exception) + " - " + exception.getMessage());
     }
 
-    private String getLineColumnNumber(SAXParseException e) {
-        return e.getLineNumber() + " : " + e.getColumnNumber();
+    private String getLineColumnNumber(SAXParseException exception) {
+        return exception.getLineNumber() + " : " + exception.getColumnNumber();
     }
 }

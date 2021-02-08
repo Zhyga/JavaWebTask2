@@ -18,6 +18,7 @@ public enum ComputerXMLTag {
     MANUFACTURER("manufacturer"),
     WIFI("wifi"),
     WEIGHT("weight"),
+    NOTEBOOK("Notebook"),
     DISPLAY("display");
     private String value;
     ComputerXMLTag(String value) {this.value = value;  }

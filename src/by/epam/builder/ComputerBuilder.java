@@ -2,7 +2,6 @@ package by.epam.builder;
 
 import by.epam.entity.Computer;
 import by.epam.exception.CustomParserException;
-
 import java.util.HashSet;
 import java.util.Set;
 

@@ -2,7 +2,6 @@ package by.epam.entity;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Computer {
     private String id;
@@ -17,7 +16,7 @@ public class Computer {
     private static final String DEFAULT_MANUFUCTURER = "HP";
 
     public Computer() {
-        manufacturer = DEFAULT_MANUFUCTURER;
+        this.manufacturer = DEFAULT_MANUFUCTURER;
     }
 
     public Computer(String id, String component, String origin, int price, boolean critical, LocalDateTime date, Type type, String pick, String manufacturer) {
@@ -118,13 +117,6 @@ public class Computer {
                 date == computer.date || (date != null && date.equals(computer.date)) &&
                 type == computer.type || (type != null && type.equals(computer.type)) &&
                 manufacturer == computer.manufacturer || (manufacturer != null && manufacturer.equals(computer.manufacturer));
-//                Objects.equals(id, computer.id) &&
-//                Objects.equals(component, computer.component) &&
-//                Objects.equals(origin, computer.origin) &&
-//                Objects.equals(date, computer.date) &&
-//                Objects.equals(type, computer.type) &&
-//                Objects.equals(pick, computer.pick) &&
-//                Objects.equals(manufacturer, computer.manufacturer);
     }
 
     @Override
@@ -208,7 +200,7 @@ public class Computer {
         }
 
         public String[] getPorts() {
-            return ports;
+            return ports.clone();
         }
 
         public void setPorts(String[] ports) {

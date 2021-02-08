@@ -2,7 +2,6 @@ package warehouse;
 
 import by.epam.entity.Computer;
 import by.epam.entity.Notebook;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
