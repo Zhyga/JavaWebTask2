@@ -55,7 +55,7 @@ public class Notebook extends Computer{//only DOM parser
 
     @Override
     public int hashCode() {
-        int result = 128;
+        int result = 127;
         result = 11 * result + weight;
         result = 11 * result + (wifi ? 1 : 0);
         result = 11 * result + (display == null ? 0 : display.hashCode());

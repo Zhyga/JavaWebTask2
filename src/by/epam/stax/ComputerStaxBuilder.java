@@ -74,7 +74,6 @@ public class ComputerStaxBuilder extends ComputerBuilder {
                             String date = getXMLText(reader);
                             LocalDateTime dateTime = LocalDateTime.parse(date);
                             computer.setDate(dateTime);
-                            break;
                         }
                         case TYPE -> computer.setType(getXMLType(reader));
                     }

@@ -122,15 +122,15 @@ public class Computer {
     @Override
     public int hashCode() {
         int result = 31;
-        result = 24 * result + (component == null ? 0 : component.hashCode());
-        result = 24 * result + (id == null ? 0 : id.hashCode());
-        result = 24 * result + (origin == null ? 0 : origin.hashCode());
-        result = 24 * result + (pick == null ? 0 : pick.hashCode());
-        result = 24 * result + (manufacturer == null ? 0 : manufacturer.hashCode());
-        result = 24 * result + price;
-        result = 24 * result + (critical ? 1 : 0 );
-        result = 24 * result + (date == null ? 0 : date.hashCode());
-        result = 24 * result + type.hashCode();
+        result = 11 * result + (component == null ? 0 : component.hashCode());
+        result = 11 * result + (id == null ? 0 : id.hashCode());
+        result = 11 * result + (origin == null ? 0 : origin.hashCode());
+        result = 11 * result + (pick == null ? 0 : pick.hashCode());
+        result = 11 * result + (manufacturer == null ? 0 : manufacturer.hashCode());
+        result = 11 * result + price;
+        result = 11 * result + (critical ? 1 : 0 );
+        result = 11 * result + (date == null ? 0 : date.hashCode());
+        result = 11 * result + type.hashCode();
         return result;
     }
 

@@ -60,14 +60,12 @@ public class ComputerHandler extends DefaultHandler{
                     String date = data;
                     LocalDateTime dateTime = LocalDateTime.parse(date);
                     current.setDate(dateTime);
-                    break;
                 }
                 case PERIPHERAL -> current.getType().setPeripheral(Boolean.parseBoolean(data));
                 case ENERGY -> current.getType().setEnergy(Integer.parseInt(data));
                 case COOLER -> current.getType().setCooler(Boolean.parseBoolean(data));
                 case PORT -> {
                     list.add(data);
-                    break;
                 }
                 default -> throw new EnumConstantNotPresentException(
                         currentXmlTag.getDeclaringClass(), currentXmlTag.name());
